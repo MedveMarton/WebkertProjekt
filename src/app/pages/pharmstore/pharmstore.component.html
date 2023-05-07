@@ -1,0 +1,30 @@
+<div class="page" #theContainer>
+  <h1>Pharm Store</h1>
+  <mat-grid-list [cols]="breakpoint" rowHeight="1:1.7"  (window:resize)="onResize($event)">
+    <mat-grid-tile *ngFor="let card of cardsslice">
+      <mat-card class="store-card">
+        <mat-card-header>
+          <img mat-card-avatar src={{card.headerimg}}>
+          <mat-card-title>{{card.title}}</mat-card-title>
+          <mat-card-subtitle>{{card.subtitle}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src={{card.image}}>
+        <mat-card-content>
+          <p>
+            {{card.content}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>Order</button>
+          <button mat-button>Review</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-paginator [length]="this.cards.length"
+            [pageSize]="4"
+            [pageSizeOptions]="[2, 4, 8, 16]"
+            (page)="OnPageChange($event)">
+
+</mat-paginator>
+</div>
